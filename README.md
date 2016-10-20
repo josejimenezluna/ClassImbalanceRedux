@@ -4,6 +4,25 @@ Requirements (Python 3):  `numpy`, `joblib` and `sklearn`
 
 That's it. The class uses standard sklearn conventions.
 
+#### Example of Usage
+
+```python
+import numpy as np
+from sklearn.ensemble import GradientBoostingClassifier
+
+clf = GradientBoostingClassifier(n_estimators = 3000)
+
+cir = ClassImbalanceRedux(clf, n_bags = 10)
+cir.fit(X_train, y_train) # y_train needs to be binary. np.int format only.
+cir.predict(X_test)
+cir.predict_proba(X_test)
+cir.save('/home/user/model.npy')
+
+## To load for production
+cir = np.load('/home/user/model.npy').item()
+```
+
+
 #### Citation
 ```
 @inproceedings{Wallace2011,
