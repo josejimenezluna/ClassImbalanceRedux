@@ -46,7 +46,9 @@ class ClassImbalanceRedux:
 		self.y_hat = np.squeeze([self._predBag(clf, X_test) for clf in self.fit_clfs])
 		prob = np.sum(self.y_hat, axis = 0)/self.y_hat.shape[0]
 		return prob
-
+	
+	def save(self, path = '.'):
+		np.save(path, arr = self)
 		
 
 			 
